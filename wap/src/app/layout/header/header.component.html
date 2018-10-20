@@ -1,0 +1,15 @@
+<div class="head_box">
+    <div class="flex_row_start app_name">智能锁公寓行业平台</div>
+    <div class="flex_row_end">
+        <!--<span class="">管理员admin,欢迎你</span>-->
+        <nz-badge class="pointer" routerLink="/admin/news" [nzCount]="settings.unreadNewsNumber"
+                  style="margin-right: 24px;">
+            <nz-avatar nzSize="large" nzIcon="anticon anticon-bell"></nz-avatar>
+        </nz-badge>
+        <img class="user_image margin_l_20" src="assets/img/user.png" alt="">
+        <span class="margin_l_10 pointer" (click)="logout()">退出</span>
+    </div>
+</div>
+
+
+

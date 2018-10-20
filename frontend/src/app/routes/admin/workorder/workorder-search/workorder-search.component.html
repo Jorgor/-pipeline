@@ -1,9 +1,0 @@
-<div class="admin_filter_box">
-	<div class="filter_row">
-		<span class="filter_title">工单状态：</span>
-		<div class="filter_item">
-			<span class="filter_btn" [class.active]="selectedType==''"  (click)="typeChanged('')">全部</span>
-            <span class="filter_btn" [class.active]="selectedType==v.code" *ngFor="let v of wokerorderStatus ; let i=index"  (click)="typeChanged(v.code)">{{v.name}}</span>
-		</div>
-	</div>
-</div>

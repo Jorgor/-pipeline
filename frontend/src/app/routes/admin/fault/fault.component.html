@@ -1,8 +1,0 @@
-<section>
-<div class="content_title">故障列表</div>
-	<div class="content_inner">
-   <fault-search (selectedEvent)="typeSelected($event)" (alarmCreatedEvent)="alarmCreated()" [faultType]="faultType"></fault-search>
-   <fault-list [faultList] = "faultList" [(paginator)]="paginator" (pageChange)="pageChanged($event)" (getDataListEE)="getDataList();"></fault-list>
-   </div>
-</section>
-

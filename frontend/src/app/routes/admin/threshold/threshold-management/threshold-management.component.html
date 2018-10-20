@@ -1,7 +1,0 @@
-<section>
-    <div class="content_title">传感器列表</div>
-    <div class="content_inner">
-        <threshold-editor [showEditor]="showEditor" [editorSensorThreshold]="editorSensorThreshold" (cancelEditEvent)="cancelEdit($event)" (saveEvent)="saveEdit($event)"></threshold-editor>
-        <threshold-list [(paginator)]="paginator" [sensorList]="sensorList" (pageChange)="pageChanged($event)" (editEvent)="edit($event)"></threshold-list>
-    </div>
-</section>

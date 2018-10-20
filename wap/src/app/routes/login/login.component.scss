@@ -1,0 +1,44 @@
+@import "../../../styles";
+$blue1:#0085D0;
+$login_width: 100%;
+$login_height: auto;
+.body_login{ background:url('/assets/img/bg1@1x.png') no-repeat; background-size:cover;width: 100%;
+	height: 100%; position: absolute;   }
+.login-container {
+	width: $login_width;
+	height: $login_height;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+    box-shadow: 0 20px 35px 0 rgba(31,71,180,0.10);;
+	transform: translate(-50%,-50%);
+}
+
+.login-container >.row{ margin: 0;}
+.login_content{     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;}
+
+.form .ipt_group{  margin-bottom: 10px;}
+.form .ipt_group *{ border-radius: 0;}
+.form .ipt_input{  }
+.logo{margin-bottom: 5px;}
+.logo > img{height: 25px;}
+.form{margin: 30px;max-width: 350px; }
+.form .text-danger{color:#c5c5c5 }
+.login_title_box{ position: absolute; top: -100px; width: 100%; text-align: center}
+.login_title{ font-size: 28px; color: #fff; margin-bottom: 15px;   letter-spacing: 5px; }
+.login_btn{border:none;background: linear-gradient(0deg, #496CE5 0%, #193DBA 100%);
+    color: #fff; border-radius: 0; }
+.login_btn:hover{ color: #fff;}
+.btn_cancel{border-radius: 0;border:none; background: #fff}
+.form-group{ position: relative;}
+.login_btn:active{box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);}
+.remember{color: #878A95;}
+.forget{ color:  #3B79EA; display: inline-block}
+.send_yzm{ position: absolute; right:5px; top: 10px;}
+.login_bg_box{ background-size: cover;  width: 100%; position: absolute; min-height: 560px; z-index: -1; top: 50%; left: 50%; transform: translate(-50%,-50%)}
+.form_title{ font-weight: bold; font-size: 20px;color: #fff;
+    letter-spacing: 2px;  margin-bottom: 10px;}

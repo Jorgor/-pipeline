@@ -1,0 +1,7 @@
+@import "../../../styles";
+.head_box{height: 100px;color: #fff;
+    display: flex;flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between}
+.user_image{ width: 40px; background-color: #ccc; border-radius: 200px;}
+.app_name{ letter-spacing: 8px; font-size: 18px;}
+/deep/ .ant-badge-count{ border: none; box-shadow: 0 0 0 1px #797878;}
+/deep/ .ant-avatar{ background: rgba(77, 74, 74, 0.28);}

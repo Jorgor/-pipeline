@@ -1,9 +1,0 @@
-
-@import "../../../styles.scss";
-
-.pipelinehistoricData{position: fixed; z-index: 10000; left: 0; top:0; right: 0; bottom: 0; background-color: rgba(23,23,54,.5);}
-.chartArea{background: #fff;margin: 0 auto; margin-top: $header_height+30; position: relative; padding:50px; }
-.pipelineChartCloseBtn{ cursor: pointer; position: absolute;  right: -15px;  top: -15px;  background: #fff;  border: 1px solid #21b3e0;  border-radius: 50%;  color: #21b3e0;  z-index: 1;  width: 30px;  height: 30px;  text-align: center;  line-height: 30px;}
-.pipelineChartCloseBtn:hover{ background: #ccc;}
-#charts1{ height: 100px;}
-

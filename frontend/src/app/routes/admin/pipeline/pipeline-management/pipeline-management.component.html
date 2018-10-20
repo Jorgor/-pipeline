@@ -1,7 +1,0 @@
-<section>
-	<div class="content_title">管道列表</div>
-	<div class="content_inner">
-		<pipeline-searcher (selectedEvent)="conditionSelected($event)"></pipeline-searcher>
-		<pipeline-list [(paginator)]="paginator" [pipelineList]="pipelineList" (pageChange)="pageChanged($event)"></pipeline-list>
-	</div>
-</section>

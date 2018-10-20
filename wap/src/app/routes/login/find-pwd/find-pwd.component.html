@@ -1,0 +1,42 @@
+<div class="body_login">
+    <div class="login-container">
+        <div class="login_content">
+            <div class="form">
+                <form [formGroup]="valForm"  (ngSubmit)="submitForm($event,valForm)">
+                    <div class="form_title">忘记密码</div>
+                    <div class="input-group input-group-lg ipt_group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" name="mobile" class="form-control  ipt_input"
+                               formControlName="mobile" placeholder="手机号码"/>
+                    </div>
+                    <p class="text-danger font_12" *ngIf='(!valForm.controls.mobile.valid ) && valForm.controls.mobile.touched '>请输入手机号码</p>
+                    <div class="input-group input-group-lg ipt_group">
+                        <span class="input-group-addon">@</span>
+                        <input type="password" name="password" class="form-control  ipt_input"
+                               formControlName="password" placeholder="密码"/>
+                    </div>
+                    <p class="text-danger font_12" *ngIf='(!valForm.controls.password.valid) && valForm.controls.password.touched '>密码要求数字及大小写字母，长度6到16</p>
+                    <div class="input-group input-group-lg ipt_group">
+                        <span class="input-group-addon">@</span>
+                        <input type="password" name="passwordCertain" class="form-control  ipt_input"
+                               formControlName="passwordCertain" placeholder="确认新密码"/>
+                    </div>
+                    <p class="text-danger font_12" *ngIf='(!valForm.controls.passwordCertain.valid) && valForm.controls.passwordCertain.touched '>两次密码不一致</p>
+                    <div class="input-group input-group-lg ipt_group">
+                        <input type="text" name="code" class="form-control  ipt_input"
+                               formControlName="code" placeholder="验证码"/>
+                        <span class="input-group-btn"  >
+                            <span class="btn btn-default " [class.disabled]="checkCountBegin" (click)="getYzm()">{{leftWord}}</span>
+                        </span>
+                    </div>
+                    <p class="text-danger font_12" *ngIf='(!valForm.controls.code.valid) && valForm.controls.code.touched '>请输入验证码</p>
+                    <div class="row margin_lr_0">
+                        <button class="login_btn width_049 pull-left  btn-lg">确认修改</button>
+                        <span routerLink="/login" class="btn_cancel btn  width_049 pull-right  btn-lg">取消</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

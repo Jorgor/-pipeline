@@ -1,0 +1,35 @@
+<div class="body_login">
+    <div class="login-container">
+        <div class="login_content">
+            <div class="form">
+                <form [formGroup]="valForm"  (ngSubmit)="submitForm($event,valForm)"   >
+                    <div class="logo"><img src="assets/img/logo_wap@1x.png" ></div>
+                    <div class="form_title">地下污水管网信息化智能管理平台</div>
+
+                    <div class="input-group input-group-lg ipt_group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input formControlName="mobile" type="text" class="form-control  ipt_input" placeholder="手机号码">
+                    </div>
+                    <div class="text-danger font_12" *ngIf='(!valForm.controls.mobile.valid) && valForm.controls.mobile.touched '>请输入手机号码</div>
+
+                    <div class="input-group input-group-lg ipt_group">
+                        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                        <input type="password" name="password" class="form-control  ipt_input"
+                               formControlName="password" placeholder="密码">
+                    </div>
+                    <div class="text-danger font_12" *ngIf='(!valForm.controls.password.valid) && valForm.controls.password.touched '>请输入密码</div>
+
+                    <div class="row margin_0 margin_b_10">
+                        <label class="pull-left remember">
+                            <input type="checkbox" name="remember" formControlName="remember"  class=""/>记住密码
+                        </label>
+                        <span class="pull-right  forget" routerLink="/find-pwd">忘记密码</span>
+                    </div>
+
+                    <input type="submit" value="登录"  class="login_btn form-control input-lg">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,15 @@
+<div class="text-center inline_box form-inline">
+    <span class="pg_total_num">共{{paginator.totalResults}}条</span>
+    <span class="pg_total_num">每页显示条数：</span>
+    <div class="form-group ">
+        <input class="margin_r_10  form-control" style="width: 60px" type="text" [(ngModel)]="paginator.pageSize">
+    </div>
+    <pagination [totalItems]="paginator.totalResults" [maxSize]="maxSize" [itemsPerPage]="paginator.pageSize"
+                [(ngModel)]="paginator.pageNo" (pageChanged)="pageChanged($event)" previousText="上一页"
+                nextText="下一页"></pagination>
+    <span class="pg_total_num">跳转至：</span>
+    <div class="form-group ">
+        <input class="margin_r_10  form-control" style="width: 60px" type="text" [(ngModel)]="paginator.pageNo">
+    </div>
+    <span class="btn btn-default" (click)="pageChanged(null)">go</span>
+</div>
