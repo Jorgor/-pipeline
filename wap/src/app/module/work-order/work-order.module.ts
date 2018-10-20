@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WorkOrderComponent } from './work-order.component';
 import { WorkOrderRoutingModule } from './work-order-routing.module';
+import { WorkOrderService } from './work-order.service';
 import { WorkListComponent } from './work-list/work-list.component';
 
 @NgModule({
@@ -10,7 +11,7 @@ import { WorkListComponent } from './work-list/work-list.component';
     WorkOrderRoutingModule
   ],
   declarations: [WorkOrderComponent,
-    WorkListComponent
-]
+    WorkListComponent],
+  providers: [WorkOrderService]
 })
 export class WorkOrderModule { }

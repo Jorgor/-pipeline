@@ -1,3 +1,17 @@
-<p>
-  work-order works!
-</p>
+<div class="work-order-main">
+  <header class="nav-box">
+      <a class="nav-back" routerLink='/login'></a>
+      维护工单
+  </header>
+  <div class="work-order-count">
+    <ul class="count-list" >
+      <li *ngFor="let count of maintain">
+        {{count.name}}<span class="count-num">({{count.total}})</span><span class="count-icon"></span>
+      </li>
+    </ul>
+    <section class="count-btn">
+      <div (click)="changeType(1)" class="count-btn-item" [class.active]="activeOrder === 1">维护工单</div>
+      <div (click)="changeType(2)" class="count-btn-item" [class.active]="activeOrder === 2">养护工单</div>
+    </section>
+  </div>
+</div>
