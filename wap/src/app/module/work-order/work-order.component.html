@@ -1,11 +1,11 @@
 <div class="work-order-main">
   <header class="nav-box">
       <a class="nav-back" routerLink='/login'></a>
-      维护工单
+      {{activeOrder === 1 ? '维护工单' : '养护工单'}}
   </header>
   <div class="work-order-count">
     <ul class="count-list" >
-      <li *ngFor="let count of maintain">
+      <li routerLink='/work-order/detail/{{count.code}}' *ngFor="let count of maintain">
         {{count.name}}<span class="count-num">({{count.total}})</span><span class="count-icon"></span>
       </li>
     </ul>

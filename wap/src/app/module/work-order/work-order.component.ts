@@ -54,7 +54,7 @@ export class WorkOrderComponent implements OnInit {
     })
   }
   changeType(type) {
-    console.log(type)
+    // todo
     this.activeOrder = type;
   }
 

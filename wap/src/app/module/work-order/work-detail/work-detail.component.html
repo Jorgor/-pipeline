@@ -1,0 +1,24 @@
+<div class="work-order-main">
+  <header class="nav-box">
+      <a class="nav-back" routerLink='/work-order'></a>
+      {{activeDetail.title}}
+  </header>
+  <div class="work-order-detail">
+    <section class="detail-box">
+      <div class="detail-title">养护类型：检查井养护</div>
+      <section class="detail-address">
+        养护位置：YS001
+      </section>
+      <section class="detail-map"><span>查看地图</span></section>
+      <section class="detail-info">
+        <p>缺陷类型：</p>
+        <p>承包商：xx维护公司</p>
+        <p>工单创建人：李xx</p>
+        <p>创建时间：2018-07-12 12:02:55</p>
+        <p>指定巡检时间：<span class="p-text">2018-07-12 12:02-07-12 13:02</span></p>
+      </section>
+    </section>
+
+    <div *ngIf="activeDetail.btn" (click)="click(activeDetail.btn.event)" class="detail-btn">{{activeDetail.btn.name}}</div>
+  </div>
+</div>
