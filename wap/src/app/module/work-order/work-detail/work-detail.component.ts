@@ -42,9 +42,11 @@ export class WorkDetailComponent implements OnInit {
   }
   activeDetail = this.status.PENDING;
   constructor(private route: ActivatedRoute) { }
-
   ngOnInit() {
     this.route.params.subscribe(({status}) => this.activeDetail = this.status[status]);
+  }
+  detailEvent(fnName) {
+    this[fnName] && this[fnName]();
   }
   btnEvent() {
     console.log('event click')
