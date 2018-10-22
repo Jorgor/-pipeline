@@ -14,7 +14,7 @@ const routes: Routes = [
     component: WorkDetailComponent
   },
   {
-    path: 'work-list',
+    path: 'work-list/:status',
     component: WorkListComponent    
   }
 ];
