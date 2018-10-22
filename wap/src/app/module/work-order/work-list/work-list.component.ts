@@ -11,11 +11,11 @@ export class WorkListComponent implements OnInit {
   constructor(private listService : WorkListService) { }
 
   ngOnInit() {
-    this.listService.getList().then( ({success,data}) => {
-      if(success){
-        console.log(data)
-      }
-    })
+    // this.listService.getList().then( ({success,data}) => {
+    //   if(success){
+    //     console.log(data)
+    //   }
+    // })
   }
 
 }
