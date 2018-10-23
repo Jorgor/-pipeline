@@ -1,8 +1,4 @@
 <div class="work-order-main">
-  <header class="nav-box">
-      <a class="nav-back" routerLink='/login'></a>
-      {{activeOrder === 1 ? '维护工单' : '养护工单'}}
-  </header>
   <div class="work-order-count">
     <ul class="count-list" >
       <li routerLink='/work-order/work-list/{{count.code}}' *ngFor="let count of maintain">

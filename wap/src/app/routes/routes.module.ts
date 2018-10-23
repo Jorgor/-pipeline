@@ -12,6 +12,7 @@ import {FindPwdComponent} from "./login/find-pwd/find-pwd.component";
 import {FindPwdService} from "./login/find-pwd/find-pwd.service";
 import {UserService} from "./login/user.service";
 import {WeUiModule} from "ngx-weui";
+import { TabComponent } from './tab/tab.component';
 
 @NgModule({
     imports: [
@@ -27,7 +28,8 @@ import {WeUiModule} from "ngx-weui";
     declarations: [
         LoginComponent,
         FindPwdComponent,
-    ],
+    TabComponent
+],
     exports: [
         RouterModule,
     ],
