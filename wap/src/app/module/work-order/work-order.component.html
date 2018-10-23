@@ -1,13 +1,11 @@
 <div class="work-order-main">
-  <div class="work-order-count">
     <ul class="count-list" >
       <li routerLink='/work-order/work-list/{{count.code}}' *ngFor="let count of maintain">
         {{count.name}}<span class="count-num">({{count.total}})</span><span class="count-icon"></span>
       </li>
     </ul>
-    <section class="count-btn">
+    <!-- <section class="count-btn">
       <div (click)="changeType(1)" class="count-btn-item" [class.active]="activeOrder === 1">维护工单</div>
       <div (click)="changeType(2)" class="count-btn-item" [class.active]="activeOrder === 2">养护工单</div>
-    </section>
-  </div>
+    </section> -->
 </div>
