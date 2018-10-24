@@ -1,6 +1,6 @@
 <div class="work-order-main">
     <ul class="count-list" >
-      <li routerLink='/work-order/work-list/{{count.code}}' *ngFor="let count of maintain">
+      <li routerLink='/tab/work-order/detail/{{count.code}}' *ngFor="let count of maintain">
         {{count.name}}<span class="count-num">({{count.total}})</span><span class="count-icon"></span>
       </li>
     </ul>

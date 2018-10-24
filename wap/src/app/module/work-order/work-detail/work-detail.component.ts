@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Location} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -41,7 +41,7 @@ export class WorkDetailComponent implements OnInit {
     }
   }
   activeDetail = this.status.PENDING;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, public location: Location) { }
   ngOnInit() {
     this.route.params.subscribe(({status}) => this.activeDetail = this.status[status]);
   }
@@ -50,6 +50,9 @@ export class WorkDetailComponent implements OnInit {
   }
   btnEvent() {
     console.log('event click')
+  }
+  goback() {
+    this.location.back();
   }
 
 }

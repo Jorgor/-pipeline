@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(private server:HomeService) { }
 
   ngOnInit() {
+    this.server.getPending().then(res => {
+      console.log('getPending', res)
+    })
+    this.server.getResloveing().then(res => {
+      console.log('getResloveing', res)
+    })
   }
 
 }
