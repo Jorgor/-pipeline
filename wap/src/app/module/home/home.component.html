@@ -1,5 +1,5 @@
 <div class="home-main">
-  <div class="reslove-box home-box">
+  <div class="reslove-box home-box" [class.disabled]="!resloveNum">
     <header>待处理工单</header>
     <div class="home-contain">
       详情
@@ -12,9 +12,9 @@
   <div class="unreslove-box home-box">
     <header>待认领工单</header>
     <div class="home-contain">
-      3个
+      {{pendingNum}}个
     </div>
-    <section class="home-btn">
+    <section class="home-btn" [class.disabled]="pendingNum<1 || resloveNum">
       <span>去认领</span>
     </section>
   </div>
