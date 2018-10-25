@@ -8,6 +8,7 @@ import {UserService} from '../../routes/login/user.service';
 
 import {ApiResponse} from "../../domain/api-response.domain";
 import {WorkOrderStatus} from "../../domain/workOrderStatus.domain";
+import {WorkOrder } from "../../domain/workOrder.domain";
 
 @Injectable()
 export class WorkOrderService extends BaseService {
@@ -18,5 +19,8 @@ export class WorkOrderService extends BaseService {
   }
   getCount():Promise<ApiResponse<Array<WorkOrderStatus>>> {
     return this.get('my/workorder/count')
+  }
+  getList(type):Promise<ApiResponse<Array<WorkOrder>>> {
+    return this.get('my/workorder?status=' + type)
   }
 }
