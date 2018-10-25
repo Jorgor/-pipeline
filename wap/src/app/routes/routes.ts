@@ -9,11 +9,10 @@ export const routes = [
     {path: 'login', component: LoginComponent},
     {path: 'find-pwd', component: FindPwdComponent},
     {
-        path: 'tab', 
+        path: 'home', 
         component: TabComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            {path:'home', loadChildren: '../module/home/home.module#HomeModule'},
+            {path:'', loadChildren: '../module/home/home.module#HomeModule'},
             {path: 'work-order', loadChildren: '../module/work-order/work-order.module#WorkOrderModule'},
         ]
     },

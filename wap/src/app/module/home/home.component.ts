@@ -7,15 +7,20 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+  pendingNum = 0;
+  resloveNum = null
   constructor(private server:HomeService) { }
 
   ngOnInit() {
     this.server.getPending().then(res => {
-      console.log('getPending', res)
+      if(res.success && res.data) {
+        this.pendingNum = res.data[0].total;
+      }
     })
     this.server.getResloveing().then(res => {
-      console.log('getResloveing', res)
+      if(res.success && res.data) {
+        this.resloveNum = res.data
+      }
     })
   }
 

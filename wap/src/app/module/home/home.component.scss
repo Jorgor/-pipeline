@@ -30,11 +30,18 @@
       border-top: 1px solid #1C40BC;
       border-bottom: 1px solid #1C40BC;
       width: 100%;
+      text-align: center;
     }
     .home-btn{
       display: flex;
       align-items: center;
       width: 100%;
+      &.disabled{
+        pointer-events: none;
+        span{
+          background-image: linear-gradient( rgb(79, 80, 82) 0%, rgb(26, 28, 34) 100%); 
+        }
+      }
       span {
         padding: 1rem 0;
         flex: 1;
