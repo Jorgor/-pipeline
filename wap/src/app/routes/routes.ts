@@ -11,9 +11,11 @@ export const routes = [
     {
         path: 'home', 
         component: TabComponent,
+        canActivate: [LoginService],
         children: [
-            {path:'', loadChildren: '../module/home/home.module#HomeModule'},
+            {path:'index', loadChildren: '../module/home/home.module#HomeModule'},
             {path: 'work-order', loadChildren: '../module/work-order/work-order.module#WorkOrderModule'},
+            {path: 'mine', loadChildren: '../module/mine/mine.module#MineModule'}
         ]
     },
     {path: '**', redirectTo: 'login'}
