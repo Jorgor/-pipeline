@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkListService} from '../work-list.service'
 
 @Component({
   selector: 'app-work-list',
@@ -8,7 +7,7 @@ import { WorkListService} from '../work-list.service'
 })
 export class WorkListComponent implements OnInit {
 
-  constructor(private listService : WorkListService) { }
+  constructor() { }
 
   ngOnInit() {
     // this.listService.getList().then( ({success,data}) => {
