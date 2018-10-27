@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "install": "napa",
-    "start": "ng serve --disable-host-check --port 4203",
+    "start": "ng serve --disable-host-check --port 4200",
     "build": "ng build  -prod -aot -vc -cc -dop --buildOptimizer",
     "package": "ng build && 7z a dist.7z dist/",
     "test": "ng test",
@@ -71,7 +71,7 @@
     "ngx-color-picker": "4.0.0",
     "ngx-infinite-scroll": "0.4.1",
     "ngx-weui": "^5.0.4",
-    "node-sass": "^3.13.0",
+    "node-sass": "^4.9.4",
     "rxjs": "^5.4.1",
     "screenfull": "3.2.0",
     "simple-line-icons": "2.4.1",
