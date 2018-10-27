@@ -1,0 +1,12 @@
+<div class="mine-main">
+  <img class="mine-logo" src="assets/img/logo_wap@1x.png" />
+  <p class="mine-title">地下污水管网信息化智能管理平台</p>
+  <div class="mine-box">
+    <img src="../../../assets/img/admin_wap@1x.png" class="mine-img" alt="user_img">
+    <p>姓名</p>
+    <p>{{userInfo.realName||'未登录'}}</p>
+    <p>登录账号</p>
+    <p>{{userInfo.mobile||'未登录'}}</p>
+  </div>
+  <div (click)="logout()" class="min-btn">退出登录</div>
+</div>
