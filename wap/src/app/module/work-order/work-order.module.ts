@@ -5,6 +5,7 @@ import { WorkOrderRoutingModule } from './work-order.routing';
 import { WorkOrderService } from './work-order.service';
 import { WorkListComponent } from './work-list/work-list.component';
 import { WorkDetailComponent } from './work-detail/work-detail.component';
+import { ShowDetailComponent } from '../show-detail/show-detail.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { WorkDetailComponent } from './work-detail/work-detail.component';
   ],
   declarations: [WorkOrderComponent,
     WorkListComponent,
-    WorkDetailComponent
+    WorkDetailComponent,
+    ShowDetailComponent
   ],
   providers: [WorkOrderService]
 })
