@@ -1,10 +1,10 @@
 <div class="work-list">
     <div class="head-title">
-        <span class="back-to"></span>
+        <span (click)="goback()" class="back-to"></span>
         <div class="title">{{title.name}}</div>
     </div>
     <ul class="list-details">
-      <li *ngFor="let item of list_data;let i = index;" (click)="onSelect(i)">
+      <li routerLink='/home/work-order/detail' *ngFor="let item of list_data;let i = index;" (click)="onSelect(i)">
         <h4>{{i+1}}、{{item.feedback[0].action}}</h4>
         <div class="complete-time">
           指定完成时间: <br>

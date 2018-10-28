@@ -21,8 +21,7 @@ constructor(private user: UserService, http: HttpClient, private router: Router)
   logout(): Promise<any> {
     return new Promise((resolve, reject) => {
       try{
-        Cookie.delete(UserService.globalCookieUser);
-        Cookie.delete(UserService.globalCookieToken);
+        Cookie.deleteAll();
         if (Cookie.check(UserService.globalCookieUser)) {
             resolve({success: true});
         } else {

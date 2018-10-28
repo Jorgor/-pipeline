@@ -10,7 +10,7 @@ const routes: Routes = [
     component: WorkOrderComponent
   },
   {
-    path: 'detail/:status',
+    path: 'detail',
     component: WorkDetailComponent
   },
   {

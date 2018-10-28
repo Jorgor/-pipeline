@@ -43,7 +43,9 @@ export class WorkDetailComponent implements OnInit {
   activeDetail = this.status.PENDING;
   constructor(private route: ActivatedRoute, public location: Location) { }
   ngOnInit() {
-    this.route.params.subscribe(({status}) => this.activeDetail = this.status[status]);
+    this.route.params.subscribe(({status}) => {
+      this.activeDetail = this.status[status||'REJECTED']
+    });
   }
   detailEvent(fnName) {
     this[fnName] && this[fnName]();

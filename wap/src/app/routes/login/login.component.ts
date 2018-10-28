@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         } else {
             this.loginService.Login(form.value).then(res => {
                 if (res.success) {
-
+                    this.router.navigate(['/home'])
                 }
             });
         }
