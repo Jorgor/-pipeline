@@ -12,7 +12,7 @@ import {WorkOrder } from "../../domain/workOrder.domain";
 
 @Injectable()
 export class WorkOrderService extends BaseService {
-
+  private detail_data: any;
   constructor(http: HttpClient,
     userService: UserService) {
     super(http, userService);
@@ -24,7 +24,7 @@ export class WorkOrderService extends BaseService {
     return this.get('my/workorder?status='+type)
   }
   saveDetail(data):Promise<ApiResponse<Array<WorkOrder>>>{
-    return  data;
+    return  this.detail_data = data;
   }
   claimOrder(id):Promise<ApiResponse<boolean>>{
     return this.put(`/workorder/${id}/receive`, null)

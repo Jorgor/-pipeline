@@ -22,14 +22,14 @@ $list_height: auto;
     .back-to{
         background:url('/assets/img/back@1x.png') no-repeat; 
         background-size: 90%;
-        width: 1.75rem;
-        height: 2.5rem;
+        width: 0.875rem;
+        height: 1.25rem;
         position: absolute;
         left: 6.1%;
         top: 3.7%
     }
     .title{
-        font-size: 2.5rem;
+        font-size: 1.25rem;
         letter-spacing: -0.96px;
     }
 }
@@ -46,12 +46,12 @@ $list_height: auto;
         border: 1px solid #1C40BC;
         border-radius: 5px;
         h4{
-            font-size: 2rem;
+            font-size: 1rem;
             margin-bottom: 2.8%;
             letter-spacing: -0.77px;
         }
         .complete-time{
-            font-size: 1.5rem;
+            font-size: 0.75rem;
             letter-spacing: -0.58px;
         }
     }
