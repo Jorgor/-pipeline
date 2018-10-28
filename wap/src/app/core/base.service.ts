@@ -36,6 +36,12 @@ export class BaseService {
         return this.http.get(u, {headers: this.getHeaders(false)}).pipe();
     }
 
+    public put(url: string, data: any): Promise<any> {
+        let u = this.fixUrl(WEB_URL_PREFIX + url);
+        return this.http.put(u, data, {headers: this.getHeaders(true), params: data, withCredentials: true}).toPromise()
+            .catch(this.handleError);
+    }
+
     public post(url: string, data: any): Promise<any> {
         let u = this.fixUrl(WEB_URL_PREFIX + url);
         return this.http.post(u, data, {headers: this.getHeaders(true), params: data, withCredentials: true}).toPromise()

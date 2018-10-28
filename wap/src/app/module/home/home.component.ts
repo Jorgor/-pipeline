@@ -8,7 +8,7 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
   pendingNum = 0;
-  resloveNum = null
+  resloveDate = null
   constructor(private server:HomeService) { }
 
   ngOnInit() {
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     })
     this.server.getResloveing().then(res => {
       if(res.success && res.data) {
-        this.resloveNum = res.data
+        this.resloveDate = res.data
       }
     })
   }

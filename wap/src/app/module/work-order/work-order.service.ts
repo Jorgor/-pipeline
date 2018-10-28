@@ -21,6 +21,18 @@ export class WorkOrderService extends BaseService {
     return this.get('my/workorder/count')
   }
   getList(type):Promise<ApiResponse<Array<WorkOrder>>> {
-    return this.get('my/workorder?status=' + type)
+    return this.get('my/workorder?status='+type)
+  }
+  saveDetail(data):Promise<ApiResponse<Array<WorkOrder>>>{
+    return  data;
+  }
+  claimOrder(id):Promise<ApiResponse<boolean>>{
+    return this.put(`/workorder/${id}/receive`, null)
+  }
+  resloveOrder(id,data):Promise<ApiResponse<boolean>>{
+    return this.post(`/workorder/${id}/feedback`, data)
+  }
+  postPoint(id,data):Promise<ApiResponse<boolean>>{
+    return this.post(`/workorder/patrolworkorder/${id}/coordinate`, data)
   }
 }

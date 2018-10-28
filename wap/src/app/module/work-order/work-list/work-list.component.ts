@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkOrderService} from '../work-order.service';
+import { ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-work-list',
@@ -6,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./work-list.component.scss']
 })
 export class WorkListComponent implements OnInit {
-
-  constructor() { }
+  private  detailId : number;
+  constructor(private listService : WorkOrderService,private routerIonfo:ActivatedRoute) { }
 
   ngOnInit() {
-    // this.listService.getList().then( ({success,data}) => {
-    //   if(success){
-    //     console.log(data)
-    //   }
-    // })
+    this.detailId = this.routerIonfo.snapshot.params["status"];
+    console.log(this.detailId)
+    this.listService.getList(this.detailId).then( ({success,data}) => {
+      if(success){
+        if(data.length){
+           this.listService.saveDetail(data);
+        }
+      }
+    })
   }
 
 }

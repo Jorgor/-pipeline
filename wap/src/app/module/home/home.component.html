@@ -1,8 +1,8 @@
 <div class="home-main">
-  <div class="reslove-box home-box" [class.disabled]="!resloveNum">
+  <div class="reslove-box home-box" *ngIf="!resloveDate">
     <header>待处理工单</header>
     <div class="home-contain">
-      详情
+      TODO
     </div>
     <section class="home-btn">
       <span>处理完成</span>
@@ -14,8 +14,8 @@
     <div class="home-contain">
       {{pendingNum}}个
     </div>
-    <section class="home-btn" [class.disabled]="pendingNum<1 || resloveNum">
-      <span>去认领</span>
+    <section class="home-btn" [class.disabled]="pendingNum<1 || resloveDate">
+      <span routerLink='/home/work-order/work-list/PENDING'>去认领</span>
     </section>
   </div>
 </div>
