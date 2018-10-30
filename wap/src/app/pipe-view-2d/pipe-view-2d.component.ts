@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild} from '@angular/core';
-import {SettingsService} from "../../../core/settings/settings.service";
-import {LoginService} from "../../login/login.service";
+import {SettingsService} from "../core/settings/settings.service";
+import {LoginService} from "../routes/login/login.service";
 import 'rxjs/add/operator/toPromise';
 import {FileUploader} from "ng2-file-upload";
 import {DatePipe} from '@angular/common';
@@ -10,17 +10,17 @@ declare var layer: any;
 declare var AMapUI: any; //ui组件库加载器，已下载到本地
 import {Router} from "@angular/router";
 import {PipeView2dService} from "./pipe-view-2d.service";
-import {Pipeline} from "../../../domain/pipeline.domain";
-import {Alarm} from "../../../domain/alarm.domain";
-import {Dic} from "../../../domain/dic.domain";
-import {Paginator} from "../../../domain/paginator.domain";
-import {AlarmWithPosition} from "../../../domain/alarmWithPosition.domain";
-import {FaultType} from "../../../domain/faultType.domain";
-import {PipelinePoint} from "../../../domain/pipelinePoint.domain";
-import {AlarmService} from "../../admin/alarm/alarm.service";
-import {Cesspool} from "../../../domain/cesspool.domain";
-import {WebPosi} from "../../../domain/web-posi.domain";
-import {Coordinate} from "../../../../../../wap/src/app/domain/coordinate.domain";
+import {Pipeline} from "../domain/pipeline.domain";
+import {Alarm} from "../domain/alarm.domain";
+import {Dic} from "../domain/dic.domain";
+import {Paginator} from "../domain/paginator.domain";
+import {AlarmWithPosition} from "../domain/alarmWithPosition.domain";
+import {FaultType} from "../domain/faultType.domain";
+import {PipelinePoint} from "../domain/pipelinePoint.domain";
+import {AlarmService} from "../core/alarm.service";
+import {Cesspool} from "../domain/cesspool.domain";
+import {WebPosi} from "../domain/web-posi.domain";
+import {Coordinate} from "../domain/coordinate.domain";
 
 
 @Component({
@@ -30,7 +30,6 @@ import {Coordinate} from "../../../../../../wap/src/app/domain/coordinate.domain
 
 })
 export class PipeView2dComponent implements OnInit, OnDestroy {
-
 
     constructor(private settingsService: SettingsService,
                 private changeDetectorRef: ChangeDetectorRef,

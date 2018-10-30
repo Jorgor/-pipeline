@@ -32,6 +32,32 @@
       border-bottom: 1px solid #1C40BC;
       width: 100%;
       text-align: center;
+      &.resovle{
+        padding: 0;
+        li{
+          width: 100%;
+          list-style: none;
+          text-align: left;
+          height: 100%;
+          background-image: linear-gradient(0deg, #122770 0%, #000000 100%);
+          padding: 4.6% 7% 5.3%;
+          color: #fff;
+          h4{
+              font-size: 1rem;
+              margin-bottom: 2.8%;
+              letter-spacing: -0.77px;
+              .map-icon{
+                  background:url('/assets/img/blue_water.png') no-repeat;
+                  width: 40px;
+                  height: 50px;
+              }
+          }
+          .complete-time{
+              font-size: 0.75rem;
+              letter-spacing: -0.58px;
+          }
+        }
+      }
     }
     .home-btn{
       display: flex;

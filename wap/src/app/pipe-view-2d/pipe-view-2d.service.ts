@@ -1,7 +1,7 @@
-import {BaseService} from "../../../core/base.service";
-import {Pipeline} from "../../../domain/pipeline.domain";
-import {Alarm} from "../../../domain/alarm.domain";
-import {Response} from "../../../domain/response.domain";
+import {BaseService} from "../core/base.service";
+import {Pipeline} from "../domain/pipeline.domain";
+import {Alarm} from "../domain/alarm.domain";
+import {Response} from "../domain/response.domain";
 
 export class PipeView2dService extends BaseService {
 
