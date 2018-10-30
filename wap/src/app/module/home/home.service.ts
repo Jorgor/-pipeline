@@ -16,14 +16,13 @@ export class HomeService extends BaseService {
     super(http, userService);
   }
 
-  getPending():Promise<ApiResponse<Array<any>>> {
+  getPending(): Promise<ApiResponse<Array<any>>> {
     return this.get('my/workorder/count?status=PENDING')
   }
 
-  getResloveing():Promise<ApiResponse<Array<any>>> {
+  getResloveing(): Promise<ApiResponse<Array<any>>> {
     return this.get('my/workorder/doing')
   }
-
 }
 
 

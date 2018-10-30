@@ -12,11 +12,11 @@ import {ApiResponse} from "../../domain/api-response.domain";
 @Injectable()
 export class MineService extends BaseService {
 
-constructor(private user: UserService, http: HttpClient, private router: Router)   { 
+constructor(user: UserService, http: HttpClient, private router: Router)   { 
     super(http, user)
   }
   getUserInfo(): User {
-    return this.user.user
+    return UserService.prototype.user
   }
   logout(): Promise<any> {
     return new Promise((resolve, reject) => {

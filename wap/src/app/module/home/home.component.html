@@ -5,8 +5,7 @@
       TODO
     </div>
     <section class="home-btn">
-      <span>处理完成</span>
-      <span>上报完成</span>
+      <span *ngFor="let detailbtn of detailbtns" (click)='btnEmit(detailbtn.event)'>{{detailbtn.name}}</span>
     </section>
   </div>
   <div class="unreslove-box home-box">

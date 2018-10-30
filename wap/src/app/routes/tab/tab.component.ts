@@ -11,7 +11,8 @@ export class TabComponent implements OnInit {
   hasNav: boolean = true;
   hideNavUrl: Array<string> = [
     '/home/work-order/work-list',
-    '/home/work-order/detail'
+    '/home/work-order/detail',
+    '/home/work-order/resolve'
   ]
   constructor(private router: Router) { }
 

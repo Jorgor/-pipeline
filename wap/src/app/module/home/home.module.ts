@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 
 import { HomeRoutes } from './home.routing';
 import { HomeService } from './home.service';
+import { WorkOrderService } from '../work-order/work-order.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { HomeService } from './home.service';
     HomeRoutes
   ],
   declarations: [HomeComponent],
-  providers: [HomeService]
+  providers: [HomeService, WorkOrderService]
 })
 export class HomeModule { }
