@@ -49,6 +49,11 @@ $list_height: auto;
             font-size: 1rem;
             margin-bottom: 2.8%;
             letter-spacing: -0.77px;
+            .map-icon{
+                background:url('/assets/img/blue_water.png') no-repeat;
+                width: 40px;
+                height: 50px;
+            }
         }
         .complete-time{
             font-size: 0.75rem;
