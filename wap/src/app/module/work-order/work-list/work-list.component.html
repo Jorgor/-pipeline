@@ -5,11 +5,31 @@
     </div>
     <ul class="list-details">
       <li routerLink='/home/work-order/detail' *ngFor="let item of list_data;let i = index;" (click)="onSelect(i)">
-        <h4>{{i+1}}、{{item.feedback[0].action}}</h4>
-        <div class="complete-time">
-          指定完成时间: <br>
-          {{item.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
-        </div>    
+        <div *ngIf="item.patrolPlan">
+            <h4>{{i+1}}、{{item.patrolPlan.description}}</h4>
+            <div class="complete-time">
+              指定巡检时间: <br>
+              {{item.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
+            </div>           
+        </div>  
+        <div *ngIf="item.alarm">
+            <h4>{{i+1}}、预警描述:<br>
+                {{item.alarm.description}}</h4>
+            <h4 *ngIf="item.alarm.target.object">管道信息:{{item.alarm.target.object.serialNumber}} <span class="map-icon"></span> </h4>    
+            <div class="complete-time">
+              要求完成时间: <br>
+              {{item.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
+            </div>           
+        </div>
+        <div *ngIf="item.fault">
+            <h4>{{i+1}}、故障描述:<br>
+                {{item.fault.description}}</h4>
+            <h4 *ngIf="item.fault.target.object">管道信息:{{item.fault.target.object.serialNumber}} <span class="map-icon"></span> </h4>    
+            <div class="complete-time">
+              要求完成时间: <br>
+              {{item.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
+            </div>           
+        </div>                  
       </li> 
     </ul>
 </div>

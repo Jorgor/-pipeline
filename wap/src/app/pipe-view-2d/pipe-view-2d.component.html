@@ -1,0 +1,61 @@
+<div id="map_area">
+	<amap [option]="option"  (mapLoaded)="mapLoaded($event)" ></amap>
+	<div class="map_control_area">
+		<div class="row">
+			<span class="pull-left map_title">筛选条件</span>
+		</div>
+		<div class="content_area margin_t_10" >
+			<div class="row line_map_2d">
+                <div class="col-xs-6 name">雨水</div>
+				<div class="col-xs-6"><label class="filter_checkbox_label ys_filter_btn" [class.active]="show_ys"><input [(ngModel)]="show_ys"  type="checkbox"></label></div>
+			</div>
+			<div class="row line_map_2d">
+                <div class="col-xs-6 name">污水</div>
+				<div class="col-xs-6"><label class="filter_checkbox_label ws_filter_btn" [class.active]="show_ws"><input [(ngModel)]="show_ws"  type="checkbox"></label></div>
+			</div>
+			<div class="row line_map_2d">
+                <div class="col-xs-6 name">混排管道</div>
+				<div class="col-xs-6"><label class="filter_checkbox_label ps_filter_btn" [class.active]="show_ps"><input [(ngModel)]="show_ps"  type="checkbox"></label></div>
+			</div>
+            <div class="row line_map_2d">
+                <div class="col-xs-6 name">化粪池</div>
+                <div class="col-xs-6"><label class="filter_checkbox_label ps_filter_btn" [class.active]="show_fc"><input [(ngModel)]="show_fc"  type="checkbox"></label></div>
+            </div>
+            <div class="row line_map_2d">
+                <div class="col-xs-6 name">告警</div>
+                <div class="col-xs-6"><label class="filter_checkbox_label ps_filter_btn" [class.active]="show_alarm"><input [(ngModel)]="show_alarm"  type="checkbox"></label></div>
+            </div>
+            <div class="row line_map_2d">
+                <div class="col-xs-6 name">卫星地图</div>
+                <div class="col-xs-6"><label class="filter_checkbox_label ps_filter_btn" [class.active]="showSatelliteLayer"><input [(ngModel)]="showSatelliteLayer"  type="checkbox"></label></div>
+            </div>
+			<!--<div class="row line_map_2d">-->
+                <!--<div class="col-xs-6 name">井盖</div>-->
+                <!--<div class="col-xs-6"><img class="type_icon" src="/assets/img/point.png" alt=""></div>-->
+                <!--<div class="col-xs-6 name">出现故障</div>-->
+                <!--<div class="col-xs-6"><img class="type_icon" src="/assets/img/warngicon.png" alt=""></div>-->
+				<!--&lt;!&ndash;<div class="col-xs-6 name">显示名称</div>&ndash;&gt;-->
+				<!--&lt;!&ndash;<div class="col-xs-6"><label class="filter_checkbox_label" [class.active]="show_label"><input [(ngModel)]="show_label"  type="checkbox"></label></div>&ndash;&gt;-->
+			<!--</div>-->
+
+			<!--<div class="margin_t_10">-->
+				<!--<span class="btn btn-primary btn-sm" (click)="changeSatelliteLayer()">切换卫星地图</span>-->
+			<!--</div>-->
+		</div>
+	</div>
+    <div class="map_icon_show flex_row_start">
+        <span class="ys_icon pipeline_icon"></span>
+        <span class="icon_name">雨水管道</span>
+        <span class="ws_icon pipeline_icon"></span>
+        <span class="icon_name">污水管道</span>
+        <span class="ps_icon pipeline_icon"></span>
+        <span class="icon_name">混排管道</span>
+        <span class="well_icon"></span>
+        <span class="icon_name">井盖</span>
+        <img class="fc_icon" width="30" src="/assets/img/fc_point.png">
+        <span class="icon_name">化粪池</span>
+        <span class="alarm ">注意:<i class=" font_16 align_t color_yellow glyphicon glyphicon-info-sign margin_l_20 margin_r_3"></i>管道或井盖出现告警，请优先处理。</span>
+    </div>
+</div>
+<!--<app-pipeline-historic-data #pipeHistoryData [pipeLineName]="pipeHistoryDataId"></app-pipeline-historic-data>-->
+<workorder-create [alarm]="alarm" [showModel]="showCreateWorkOrder" (close)="showCreateWorkOrder = false" (created)="getWarningAlertData()"   ></workorder-create>
