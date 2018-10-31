@@ -14,6 +14,12 @@ export class HomeComponent implements OnInit {
   pendingNum: Number = 0;
   resloveDate: any = null;
   detailbtns:Array<{event:String, name:String}> = []
+  detailTitle={
+    PROCESSED: '已处理',
+    PROCESSING: '正在处理',
+    PENDING: '待处理工单',
+    REJECTED: '已驳回工单'
+  }
   constructor(private server:HomeService, private workServer: WorkOrderService, private router: Router) { }
 
   ngOnInit() {
@@ -64,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
   gotoFeedback() {
     const {id} =this.resloveDate;
-    this.router.navigate([`/home/work-order/resolve/:${id}`]);
+    this.router.navigate([`/home/work-order/resolve/${id}`]);
   }
 
 }

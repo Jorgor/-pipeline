@@ -1,7 +1,26 @@
 <div class="resolve-main">
   <header class="nav-box">
       <a class="nav-back" (click)="goback()"></a>
-      处理
+      正在处理
   </header>
-  workreolve
+  <div class="resolve-box">
+    <form [formGroup]="feedbackForm" class="feedback-form">
+      <p class="tip">100个字符以内</p>
+      <div class="form-item">
+        <span>填写反馈：</span>
+        <textarea name="action" formControlName="action" id="action"></textarea>
+      </div>
+      <div class="form-item">
+        <span>反馈图片：</span>
+        <div class="input-btn">
+            <input ng2FileSelect [uploader]="uploader" (change)="postImg($event)" type="file" id="photo" />
+            选择图片
+        </div>
+        <div class="photo-box">
+          <img *ngFor='let photo of photoes;' [src]="photo" alt="">
+        </div>
+      </div>
+    </form>
+    <section (click)="submitFeedback()" class="feedback-submit" [class.disabled]="showLoading">确定</section>
+  </div>
 </div>

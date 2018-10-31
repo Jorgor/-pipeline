@@ -19,7 +19,7 @@ export class BaseService {
     private getHeaders(needContentType: boolean): HttpHeaders {
         let headers: any = {};
         if (this.userService.user)
-            headers['Authorization'] = 'Bearer ' + this.userService.user.token;
+            headers['Authorization'] = 'Bearer ' + this.userService.token;
         if (needContentType)
             headers['Content-Type'] = 'application/json';
         return new HttpHeaders(headers);

@@ -57,7 +57,7 @@
       @extend .listStyle;
       margin: 0 auto;
       margin-top: 4.6875rem;
-      width: 80%;
+      width: 85%;
       padding: 2.125rem 1.8125rem;
       .detail-title{
         font-size: 1rem;
@@ -79,6 +79,16 @@
         p{
           margin-bottom: 1rem;
         }
+      }
+    }
+    .img-box{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      flex-wrap: wrap;
+      img{
+        width: 20%;
+        margin-right: 0.5rem;
       }
     }
     .detail-btn{

@@ -17,8 +17,14 @@ export class TabComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    const url = this.router.url;
+    if(this.hideNavUrl.some(u => !!url.match(u))) {
+      this.hasNav = false;
+    } else {
+      this.hasNav = true;
+    }
     this.router.events.filter(event => event instanceof NavigationStart).subscribe((event) => {
-      if(this.hideNavUrl.some(u => event['url'].match(u))) {
+      if(this.hideNavUrl.some(u => !!event['url'].match(u))) {
         this.hasNav = false;
       } else {
         this.hasNav = true;

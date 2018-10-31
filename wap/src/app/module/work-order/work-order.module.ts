@@ -6,11 +6,15 @@ import { WorkOrderService } from './work-order.service';
 import { WorkListComponent } from './work-list/work-list.component';
 import { WorkDetailComponent } from './work-detail/work-detail.component';
 import { WorkResolveComponent } from './work-resolve/work-resolve.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
-    WorkOrderRoutingModule
+    WorkOrderRoutingModule,
+    FileUploadModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [WorkOrderComponent,
     WorkListComponent,

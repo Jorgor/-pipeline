@@ -24,6 +24,7 @@ export class WorkOrderService extends BaseService {
     return this.get('my/workorder?status='+type)
   }
   saveDetail(data):Promise<ApiResponse<Array<WorkOrder>>>{
+    sessionStorage.setItem('detail_data', JSON.stringify(data))
     return  this.detail_data = data;
   }
   claimOrder(id):Promise<ApiResponse<boolean>>{
@@ -34,5 +35,9 @@ export class WorkOrderService extends BaseService {
   }
   postPoint(id,data):Promise<ApiResponse<boolean>>{
     return this.post(`/workorder/patrolworkorder/${id}/coordinate`, data)
+  }
+  public get detail(): any {
+    if(sessionStorage.getItem('detail_data')) this.detail_data = JSON.parse(sessionStorage.getItem('detail_data'));
+    return this.detail_data
   }
 }

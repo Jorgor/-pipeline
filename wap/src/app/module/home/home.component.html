@@ -1,6 +1,6 @@
 <div class="home-main">
   <div class="reslove-box home-box" *ngIf="resloveDate">
-    <header>待处理工单</header>
+    <header>{{detailTitle[resloveDate.status]}}</header>
     <div class="home-contain resovle">
       <li>
         <div *ngIf="resloveDate.patrolPlan">
@@ -30,7 +30,7 @@
         </div>                  
       </li> 
     </div>
-    <section class="home-btn">
+    <section *ngIf="resloveDate.status!=='PROCESSED'" class="home-btn">
       <span *ngFor="let detailbtn of detailbtns" (click)='btnEmit(detailbtn.event)'>{{detailbtn.name}}</span>
     </section>
   </div>

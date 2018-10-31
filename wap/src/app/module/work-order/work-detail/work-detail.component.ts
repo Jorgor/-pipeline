@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
+import { WorkOrderService } from '../work-order.service';
+import {WEB_URL_PREFIX} from "../../../../assets/server/http-link.data";
 @Component({
   selector: 'app-work-detail',
   templateUrl: './work-detail.component.html',
@@ -41,11 +42,16 @@ export class WorkDetailComponent implements OnInit {
     }
   }
   activeDetail = this.status.PENDING;
-  constructor(private route: ActivatedRoute, public location: Location) { }
+  lastFeedback = null;
+  detail = null;
+  constructor(public location: Location) { }
   ngOnInit() {
-    this.route.params.subscribe(({status}) => {
-      this.activeDetail = this.status[status||'REJECTED']
-    });
+    this.detail = WorkOrderService.prototype.detail;
+    if(this.detail.feedback){
+      this.lastFeedback = this.detail.feedback[this.detail.feedback.length-1]
+    }
+    this.activeDetail = this.status[this.detail.status];
+    console.log(this.detail)
   }
   detailEvent(fnName) {
     this[fnName] && this[fnName]();
@@ -56,5 +62,7 @@ export class WorkDetailComponent implements OnInit {
   goback() {
     this.location.back();
   }
-
+  getImg(url){
+    return `${WEB_URL_PREFIX}upload/getimg?imgurl=${url}`
+  }
 }
