@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../routes/login/login.service'
 import { MineService } from './mine.service';
 import {User} from "../../domain/user.domain";
 
@@ -9,14 +10,12 @@ import {User} from "../../domain/user.domain";
 })
 export class MineComponent implements OnInit {
   userInfo: User = null;
-  constructor(private serve: MineService) { }
+  constructor(private serve: LoginService, private minServer:MineService) { }
 
   ngOnInit() {
-    this.userInfo = this.serve.getUserInfo();
+    this.userInfo = this.minServer.getUserInfo();
   }
   logout() {
-    this.serve.logout().then(res => {
-      console.log(res)
-    })
+    this.serve.logout()
   }
 }

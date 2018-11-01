@@ -28,7 +28,7 @@ export class WorkOrderService extends BaseService {
     return  this.detail_data = data;
   }
   claimOrder(id):Promise<ApiResponse<boolean>>{
-    return this.put(`/workorder/${id}/receive`, null)
+    return this.put(`/workorder/${id}/receive`, {id})
   }
   resloveOrder(id,data):Promise<ApiResponse<boolean>>{
     return this.post(`/workorder/${id}/feedback`, data)

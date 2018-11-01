@@ -97,6 +97,11 @@
       margin-top: 1.625rem;
       @extend .active-btn;
       font-size: 1rem;
+      &.disabled{
+        pointer-events: none;
+        background: lightgray;
+        border: 0;
+      }
     }
   }
 }

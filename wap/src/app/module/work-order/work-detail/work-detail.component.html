@@ -54,6 +54,6 @@
       </section>
     </section>
 
-    <div *ngIf="activeDetail.btn" (click)="detailEvent(activeDetail.btn.event)" class="detail-btn">{{activeDetail.btn.name}}</div>
+    <div *ngFor="let btn of activeDetail.btn" (click)="detailEvent(btn.event)" class="detail-btn" [class.disabled]="showLoading">{{btn.name}}</div>
   </div>
 </div>
