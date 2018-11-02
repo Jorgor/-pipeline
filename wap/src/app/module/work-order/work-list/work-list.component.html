@@ -13,9 +13,9 @@
             </div>           
         </div>  
         <div *ngIf="item.alarm">
-            <h4>{{i+1}}、预警描述:<br>
+            <h4>{{i+1}}、预警描述:<br><br>
                 {{item.alarm.description}}</h4>
-            <h4 *ngIf="item.alarm.target.object">管道信息:{{item.alarm.target.object.serialNumber}} <span class="map-icon"></span> </h4>    
+            <h4 class="complete-time pipleMsg" *ngIf="item.alarm.target.object">管道信息: {{item.alarm.target.object.serialNumber}} <span class="map-icon"></span> </h4>    
             <div class="complete-time">
               要求完成时间: <br>
               {{item.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
