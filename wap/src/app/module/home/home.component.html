@@ -31,7 +31,7 @@
       </li> 
     </div>
     <section *ngIf="resloveDate.status!=='PROCESSED'" class="home-btn">
-      <span *ngFor="let detailbtn of detailbtns" (click)='btnEmit(detailbtn.event)'>{{detailbtn.name}}</span>
+      <span *ngFor="let detailbtn of detailbtns" (click)='btnEmit(detailbtn.event)' [class.disabled]="reportLoading&&detailbtn.event==='report'">{{detailbtn.name}}</span>
     </section>
   </div>
   <div class="unreslove-box home-box">
@@ -39,8 +39,8 @@
     <div class="home-contain">
       {{pendingNum}}个
     </div>
-    <section class="home-btn" [class.disabled]="pendingNum<1 || resloveDate">
-      <span routerLink='/home/work-order/work-list/PENDING'>去认领</span>
+    <section class="home-btn" >
+      <span [class.disabled]="pendingNum<1 || resloveDate" routerLink='/home/work-order/work-list/PENDING'>去认领</span>
     </section>
   </div>
 </div>

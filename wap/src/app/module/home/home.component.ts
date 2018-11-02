@@ -13,32 +13,34 @@ declare const layer: any;
 export class HomeComponent implements OnInit {
   pendingNum: Number = 0;
   resloveDate: any = null;
-  detailbtns:Array<{event:String, name:String}> = []
-  detailTitle={
+  detailbtns: Array<{event: String, name: String}> = [];
+  reportLoading: Boolean = false;
+  detailTitle = {
     PROCESSED: '已处理',
     PROCESSING: '正在处理',
     PENDING: '待处理工单',
     REJECTED: '已驳回工单'
   }
-  constructor(private server:HomeService, private workServer: WorkOrderService, private router: Router) { }
+  constructor(private server: HomeService, private workServer: WorkOrderService, private router: Router) { }
 
   ngOnInit() {
     this.server.getPending().then(res => {
-      if(res.success && res.data) {
+      if (res.success && res.data) {
         this.pendingNum = res.data[0].total;
       }
     })
     this.server.getResloveing().then(res => {
-      if(res.success && res.data) {
+      if (res.success && res.data) {
+        // sessionStorage.setItem('HAS_DOING', 'false');
         this.resloveDate = res.data;
         if(res.data['patrolPlan']) {
           this.detailbtns = [{
             event: 'gotoFeedback',
             name: '处理'
-          },{
+          }, {
             event: 'report',
             name: '上报'
-          }]
+          } ]
         } else {
           this.detailbtns = [{
             event: 'gotoFeedback',
@@ -49,27 +51,31 @@ export class HomeComponent implements OnInit {
     })
   }
   report() {
-    const {id} =this.resloveDate;
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(function (position) {  
-        let longitude = position.coords.longitude;  
-        let latitude = position.coords.latitude;
-        },(e) => {
-         const msg = e.code;
+    const {id} = this.resloveDate;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition( (position) => {
+        const {longitude, latitude} = position.coords;
+        this.reportLoading = layer.load();
+        this.workServer.postPoint(id, {longitude, latitude}).then(res => {
+            layer.close(this.reportLoading);
+            this.reportLoading = false;
+            layer.msg(res.msg)
+          })
+        }, (e) => {
+         // const msg = e.code;
          const dd = e.message;
-         this.workServer.postPoint(id, {longitude:1,latitude:2}).then(res => console.log(res))
-         layer.msg(dd)
-      })
+         layer.msg(dd);
+      });
     }else {
       layer.msg('请打开手机GPS')
     }
     // this.workServer.postPoint();
   }
   btnEmit(event) {
-    event && this[event]()
+    if (!!event) { this[event](); }
   }
   gotoFeedback() {
-    const {id} =this.resloveDate;
+    const {id} = this.resloveDate;
     this.router.navigate([`/home/work-order/resolve/${id}`]);
   }
 

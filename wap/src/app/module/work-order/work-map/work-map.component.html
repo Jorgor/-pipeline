@@ -1,0 +1,9 @@
+<div class="work-map-main">
+  <header class="nav-box">
+      <a class="nav-back" (click)="goback()"></a>
+      地图
+  </header>
+  <div class="map-box">
+    <amap [option]="option"  (mapLoaded)="mapLoaded($event)" ></amap>
+  </div>
+</div>

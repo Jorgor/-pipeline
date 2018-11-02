@@ -8,11 +8,12 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class TabComponent implements OnInit {
 
-  hasNav: boolean = true;
+  hasNav: Boolean = true;
   hideNavUrl: Array<string> = [
     '/home/work-order/work-list',
     '/home/work-order/detail',
-    '/home/work-order/resolve'
+    '/home/work-order/resolve',
+    '/home/work-order/map'
   ]
   constructor(private router: Router) { }
 

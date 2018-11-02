@@ -1,41 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 
-import {WorkOrderService} from './work-order.service'
-import {WorkOrderStatus} from "../../domain/workOrderStatus.domain";
+import {WorkOrderService} from './work-order.service';
+import {WorkOrderStatus} from '../../domain/workOrderStatus.domain';
 @Component({
   selector: 'app-work-order',
   templateUrl: './work-order.component.html',
   styleUrls: ['./work-order.component.scss']
 })
 export class WorkOrderComponent implements OnInit {
-  maintain:Array<any> = [
+  maintain: Array<any> = [
     {
-      code: "PENDING",
-      name: "待处理工单",
+      code: 'PENDING',
+      name: '待处理工单',
       total: 0
     },
     {
-      code: "PROCESSING",
-      name: "正在处理工单",
+      code: 'PROCESSING',
+      name: '正在处理工单',
       total: 0
     },
     {
-      code: "PROCESSED",
-      name: "已处理工单",
+      code: 'PROCESSED',
+      name: '已处理工单',
       total: 0
     },
     {
-      code: "REJECTED",
-      name: "已驳回工单",
+      code: 'REJECTED',
+      name: '已驳回工单',
       total: 0
     },
     {
-      code: "CLOSED",
-      name: "已关闭工单",
+      code: 'CLOSED',
+      name: '已关闭工单',
       total: 0
     }
   ];
-  activeOrder:number = 1;
+  activeOrder: number;
   constructor(private server: WorkOrderService) { }
 
   ngOnInit() {
@@ -46,12 +46,12 @@ export class WorkOrderComponent implements OnInit {
           const i =  data.findIndex(n => n.code === o.code);
           if(i !== -1) {
             const target = data.splice(i, 1);
-            newMaintain.push({...o,total:target[0]['total']})
+            newMaintain.push({...o, total: target[0]['total']})
           }
         })
         this.maintain = newMaintain;
       }
-    })
+    });
   }
   changeType(type) {
     // todo
