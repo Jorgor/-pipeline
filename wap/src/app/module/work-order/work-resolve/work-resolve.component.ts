@@ -44,12 +44,13 @@ export class WorkResolveComponent implements OnInit {
     this.location.back();
   }
   postImg(e) {
-    this.uploader.queue[0].upload();
-    this.uploader.queue[0].onSuccess = (response, status, headers) => {    
+    const index = this.uploader.queue.length-1;
+    this.uploader.queue[index].upload();
+    this.uploader.queue[index].onSuccess = (response, status, headers) => {    
       // 上传文件成功
       if (status == 200) {
           // 上传文件后获取服务器返回的数据
-          let res = JSON.parse(response);  
+          let res = JSON.parse(response);
           if(res.success) {
             this.photoes = this.photoes.concat([`${WEB_URL_PREFIX}upload/getimg?imgurl=${res.data.http_path}`])
             let photos = this.feedbackForm.value.photos

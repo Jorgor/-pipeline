@@ -41,37 +41,39 @@ export class WorkMapComponent implements OnInit {
     this.settingsService.createTag('assets/js/amapui/main.js', 'amapui', () => this.setMap());
   }
   setMap() {
-    console.log(this.map, this.AMap, this.detail);
+    console.log(this.detail);
     this.addSatellite();
-        this.addController();
-        // this.getFcArr();
-        // this.getWarningAlertData();
-        // this.drawPipe(this.detail.trail);
-        var l = 106, t = 29;
-        const path = this.detail.trail.reduce((n, p) => {
-          n.push([l, t]);
-          l+=0.05;
-          t+=0.05;
-          return n;
-        }, []);
-        const polyline = new this.AMap.Polyline({
-          showDir: true,
-          strokeColor: '#28F',  // 线颜色
-          strokeWeight: 6,
-          path
-        });
-        console.log(polyline)
-        this.map.add(polyline);
-        console.log(path)
-        this.goToLocation([106.424402398004, 29.821534016928])
+    this.addController();
+    this.detail.trail ? this.setPolyline(this.detail.trail) :
+    this.goToLocation([106.424402398004, 29.821534016928])
   }
-
+  //  画轨迹
+  setPolyline(trail) {
+    const finalPath = trail.reduce((n,a) => {
+        n.push([a.longitude, a.latitude])
+        return n
+    }, [])
+    this.map.setCenter(finalPath[0]);
+    const polyline = new this.AMap.Polyline({
+        showDir: true,
+        strokeColor: 'ligthgray', // 线条颜色
+        lineJoin: 'round',
+        strokeWeight: 3,
+        borderWeight: 1,
+        strokeOpacity: 0.5,
+        path: finalPath
+    });
+    polyline.setMap(this.map)
+    // 缩放地图到合适的视野级别
+    this.map.setFitView([ polyline ])
+  }
   //定位到指定点，并跳动标记
   goToLocation(position) {
     this.map.setCenter(position);
     let marker = new this.AMap.Marker({
         icon: new this.AMap.Icon({
-            image: '/assets/img/warngicon.png',
+            image: '/assets/img/blue_water.png',
+            imageSize: new this.AMap.Size(25, 30),
             size: new this.AMap.Size(30, 30)
         }),
         position: position, // this.map.getCenter(),
@@ -82,9 +84,6 @@ export class WorkMapComponent implements OnInit {
     });
     // 设置点标记的动画效果，此处为弹跳效果
     marker.setAnimation('AMAP_ANIMATION_DROP');
-    setTimeout(function () {
-        marker.setMap();
-    }, 5000);
   }
   _showSatelliteLayer: Boolean;
   set showSatelliteLayer(v) {
@@ -113,99 +112,5 @@ export class WorkMapComponent implements OnInit {
             showZoomNum: false // 显示zoom值
         }));
     });
-  }
-
-  // 画管线
-  drawPipe(pipelines) {
-    if (this.pathSimplifierIns) this.pathSimplifierIns.setData();
-    var pathSimplifierIns = new this.PathSimplifier({
-        zIndex: 100,
-        // autoSetFitView: true,
-        map: this.map,
-        data: pipelines,
-        getPath: function (pipeline, pathIndex) {
-            let posi = this.getPipelinePointPosi(pipeline);
-            return posi;
-        }.bind(this),
-        getHoverTitle: function (pipeLine, pathIndex, pointIndex) {
-            if (pointIndex >= 0) {
-                const pointName = pointIndex == 0 ? 'startPoint' : 'endPoint';
-                return `
-            <span>井盖ID:${pipeLine[pointName].id}</span><br>
-            `;
-            }
-            return `
-          <span>管线ID:${pipeLine.id}</span><br>
-          `;
-        },
-        renderOptions: {
-            getPathStyle: this.getPathStyle.bind(this)
-        }
-    });
-    this.pathSimplifierIns = pathSimplifierIns;
-  }
-  getPathStyle(mapPipeLine) {
-    let pipeline = mapPipeLine.pathData
-    const colors = {
-        'ys': '#00CEFF',
-        'ws': '#FFA800',
-        'ps': '#00FF04'
-    };
-    const color = colors[pipeline.type],
-        lineWidth = 1,
-        step = (this.posiDisToPixDis(pipeline) + 4) / 2;
-    return {
-        startPointStyle: this.getPointStyle.bind(this)(),
-        endPointStyle: this.getPointStyle.bind(this)(),
-        pathLineStyle: {
-            strokeStyle: color,
-            lineWidth: lineWidth,
-            borderWidth: 0,
-            dirArrowStyle: this.map.getZoom() >= 18 ? {stepSpace: step, width: 10} : false
-        },
-        pathLineSelectedStyle: {
-            lineWidth: lineWidth + 2,
-        },
-        pathLineHoverStyle: {
-            lineWidth: lineWidth + 2,
-        },
-        pathNavigatorStyle: {
-            fillStyle: color
-        }
-    };
-  }
-  getPipelinePointPosi(pipeline) {
-    const startPosi = [pipeline.startPoint.coordinate.longitude, pipeline.startPoint.coordinate.latitude],
-        endPosi = [pipeline.endPoint.coordinate.longitude, pipeline.endPoint.coordinate.latitude];
-    return [startPosi, endPosi];
-  }
-
-  posiToPix(lng, lat) {
-      var px = lng, py = lat;
-      if (px && py) {
-          var pixel = this.map.lnglatTocontainer([px, py]);
-          return [pixel.getX(), pixel.getY()];
-      }
-  }
-
-  posiDisToPixDis(pipeline) {
-      let posi = this.getPipelinePointPosi(pipeline);
-      let pix = [this.posiToPix(posi[0][0], posi[0][1]), this.posiToPix(posi[1][0], posi[1][1])]
-      let disX = pix[1][0] - pix[0][0];
-      let disY = pix[1][1] - pix[0][1];
-      return Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2))
-  }
-  getPointStyle() {
-    let zoom = this.map.getZoom();
-    return {
-        radius: function () {
-            if (zoom > 17) return 2;
-            if (zoom < 16) return 0;
-            return 1;
-        }(),
-        fillStyle: '#ccc',
-        strokeStyle: '#fff',
-        lineWidth: 1
-    };
   }
 }
