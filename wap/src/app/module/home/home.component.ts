@@ -78,8 +78,12 @@ export class HomeComponent implements OnInit {
     const {id} = this.resloveDate;
     this.router.navigate([`/home/work-order/resolve/${id}`]);
   }
-  gotoMap() {
+  navigateUrl(url) {
+    const router = {
+      mapL: '/home/work-order/map',
+      detail: '/home/work-order/detail',
+    }
     sessionStorage.setItem('detail_data', JSON.stringify(this.resloveDate))
-    this.router.navigate([`/home/work-order/map`]);
+    this.router.navigate([router[url]]);
   }
 }

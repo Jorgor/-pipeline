@@ -12,7 +12,7 @@
         </div>  
         <div *ngIf="resloveDate.alarm">
             <h4>预警描述: {{resloveDate.alarm.description}}</h4>
-            <h4 class="pipleMsg" *ngIf="resloveDate.alarm.target.object">管道信息: {{resloveDate.alarm.target.object.serialNumber || resloveDate.alarm.target.object.startPoint.serialNumber + '-' + resloveDate.alarm.target.object.endPoint.serialNumber}} <span (click)="gotoMap()" class="map-icon"></span> </h4>    
+            <h4 class="pipleMsg" *ngIf="resloveDate.alarm.target.object">管道信息: {{resloveDate.alarm.target.object.serialNumber || resloveDate.alarm.target.object.startPoint.serialNumber + '-' + resloveDate.alarm.target.object.endPoint.serialNumber}} <span (click)="navigateUrl('map')" class="map-icon"></span> </h4>    
             <div class="complete-time">
               要求完成时间: <br>
               {{resloveDate.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
@@ -20,12 +20,13 @@
         </div>
         <div *ngIf="resloveDate.fault">
             <h4>故障描述: {{resloveDate.fault.description}}</h4>
-            <h4 class="pipleMsg" *ngIf="resloveDate.fault.target.object">管道信息: {{resloveDate.alarm.target.object.serialNumber || resloveDate.alarm.target.object.startPoint.serialNumber + '-' + resloveDate.alarm.target.object.endPoint.serialNumber}}<span (click)="gotoMap()" class="map-icon"></span> </h4>    
+            <h4 class="pipleMsg" *ngIf="resloveDate.fault.target.object">管道信息: {{resloveDate.alarm.target.object.serialNumber || resloveDate.alarm.target.object.startPoint.serialNumber + '-' + resloveDate.alarm.target.object.endPoint.serialNumber}}<span (click)="navigateUrl('map')" class="map-icon"></span> </h4>    
             <div class="complete-time">
               要求完成时间: <br>
               {{resloveDate.finishAt|date:'yyyy-MM-dd HH:mm:ss'}}
             </div>           
-        </div>                  
+        </div> 
+        <a class="navigater-link" *ngIf="!(resloveDate.status!=='PROCESSED')" (click)="navigateUrl('detail')"  ></a>                 
       </li> 
     </div>
     <section *ngIf="resloveDate.status!=='PROCESSED'" class="home-btn">

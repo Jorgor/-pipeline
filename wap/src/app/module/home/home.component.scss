@@ -31,6 +31,7 @@
       border-top: 1px solid #1C40BC;
       border-bottom: 1px solid #1C40BC;
       width: 100%;
+      position: relative;
       text-align: center;
       &.resovle{
         padding: 0;
@@ -68,6 +69,13 @@
             height: 1.5625rem;
             transform: scale(0.5);
         }
+      }
+      .navigater-link{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
       }
     }
     .home-btn{

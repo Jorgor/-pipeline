@@ -72,9 +72,10 @@ export class WorkMapComponent implements OnInit {
         strokeOpacity: 0.5,
         path: finalPath
     });
-    polyline.setMap(this.map)
+    polyline.setMap(this.map);
     // 缩放地图到合适的视野级别
-    this.map.setFitView([ polyline ])
+    // this.map.setFitView([ polyline ]);
+    this.map.setZoom(19);
   }
   // 定位到指定点，并跳动标记
   goToLocation(position) {
