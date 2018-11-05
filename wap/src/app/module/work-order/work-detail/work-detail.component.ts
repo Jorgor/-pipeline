@@ -104,7 +104,7 @@ export class WorkDetailComponent implements OnInit {
       layer.close(this.showLoading);
       this.showLoading = false;
       layer.msg('网络错误');
-    })
+    });
   }
   goback() {
     this.location.back();

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
       if (res.success && res.data) {
         this.pendingNum = res.data[0].total;
       }
-    })
+    });
     this.server.getResloveing().then(res => {
       if (res.success && res.data) {
         // sessionStorage.setItem('HAS_DOING', 'false');
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
           }]
         }
       }
-    })
+    });
   }
   report() {
     const {id} = this.resloveDate;
@@ -78,5 +78,8 @@ export class HomeComponent implements OnInit {
     const {id} = this.resloveDate;
     this.router.navigate([`/home/work-order/resolve/${id}`]);
   }
-
+  gotoMap() {
+    sessionStorage.setItem('detail_data', JSON.stringify(this.resloveDate))
+    this.router.navigate([`/home/work-order/map`]);
+  }
 }
