@@ -24,11 +24,13 @@ export class TabComponent implements OnInit {
     } else {
       this.hasNav = true;
     }
-    this.router.events.filter(event => event instanceof NavigationStart).subscribe((event) => {
-      if(this.hideNavUrl.some(u => !!event['url'].match(u))) {
-        this.hasNav = false;
-      } else {
-        this.hasNav = true;
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        if(this.hideNavUrl.some(u => !!event['url'].match(u))) {
+          this.hasNav = false;
+        } else {
+          this.hasNav = true;
+        }
       }
     });
   }

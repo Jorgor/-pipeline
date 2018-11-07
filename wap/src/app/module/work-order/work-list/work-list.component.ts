@@ -9,9 +9,9 @@ import { ActivatedRoute, Params, Router} from '@angular/router';
   styleUrls: ['./work-list.component.scss']
 })
 export class WorkListComponent implements OnInit {
-  private  detailId : number;
-  private  list_data : object ;
-  private  title : string ;
+  detailId : number;
+  list_data : object ;
+  title : any;
   maintain:Array<any> = [
     {
       code: "PENDING",
