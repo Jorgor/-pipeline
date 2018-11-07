@@ -1,7 +1,7 @@
 <div class="work-list">
     <div class="head-title">
         <span (click)="goback()" class="back-to"></span>
-        <div class="title">{{title.name}}</div>
+        <div class="title">{{title}}</div>
     </div>
     <ul class="list-details">
       <li routerLink='/home/work-order/detail' *ngFor="let item of list_data;let i = index;" (click)="onSelect(i)">
