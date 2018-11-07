@@ -38,7 +38,7 @@ export class WorkListComponent implements OnInit {
 
   ngOnInit() {
     this.detailId = this.routerIonfo.snapshot.params["status"];
-    this.title = this.maintain.filter( (item) => item.code == this.detailId )[0];
+    this.title = this.maintain.filter( (item) => item.code == this.detailId ) && this.maintain.filter( (item) => item.code == this.detailId )[0].name;
     this.listService.getList(this.detailId).then( ({success,data}) => {
       if(success){
         if(data['data'].length){
