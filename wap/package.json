@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "install": "napa",
-    "start": "ng serve --disable-host-check --port 4202 --aot",
+    "start": "ng serve --disable-host-check --port 4202 --host 172.20.10.8 --aot",
     "build": "ng build  -prod -aot -vc -cc -dop --buildOptimizer",
     "package": "ng build && 7z a dist.7z dist/",
     "test": "ng test",
