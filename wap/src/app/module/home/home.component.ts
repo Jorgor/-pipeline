@@ -118,6 +118,8 @@ export class HomeComponent implements OnInit {
           });
       });
       AMap.event.addListener(geolocation, 'error', (data) => {
+        layer.close(this.reportLoading);
+        this.reportLoading = false;
         layer.msg(data.message);
       });
     });
