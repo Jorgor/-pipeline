@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {FormGroup, Validators, FormControl} from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import {WorkOrderFeedback} from '../../../domain/workOrderFeedback.domain';
 import {WorkOrderService} from '../work-order.service';
@@ -27,7 +27,7 @@ export class WorkResolveComponent implements OnInit {
   photoes :Array<string> = [];
   id: String = '';
   showLoading: boolean = false;
-  constructor(public location: Location, private route: ActivatedRoute, private serve: WorkOrderService) {
+  constructor(private location: Location, private router: Router, private route: ActivatedRoute, private serve: WorkOrderService) {
     this.feedbackForm = new FormGroup({
       'action': new FormControl(this.feedback.action || ''),
       'photos': new FormControl(this.feedback.photos || []),
@@ -39,6 +39,9 @@ export class WorkResolveComponent implements OnInit {
     this.route.params.subscribe(({id}) => {
       this.id = id
     });
+    if (!WorkOrderService.prototype.detail) {
+      this.router.navigate(['home']);
+    }
   }
   goback() {
     this.location.back();
@@ -70,8 +73,9 @@ export class WorkResolveComponent implements OnInit {
       layer.close(this.showLoading);
       this.showLoading = false;
       layer.msg(res.msg);
-      if(res.success){
-        this.location.back();
+      if (res.success) {
+        this.router.navigate(['home']);
+        sessionStorage.setItem('detail_data', null);
       }
     })
   }
