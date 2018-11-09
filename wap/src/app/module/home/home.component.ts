@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
       layer.msg('请打开手机GPS')
       this.initmap(id);
     }
+    setTimeout(() => this.reportLoading = false, 2000)
     // this.workServer.postPoint();
   }
   initmap(id) {
