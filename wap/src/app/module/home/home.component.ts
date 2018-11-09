@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
       navigator.geolocation.getCurrentPosition( (position) => {
         const {longitude, latitude} = position.coords;
         this.workServer.postPoint(id, {longitude, latitude}).then(res => {
-            layer.close(this.reportLoading);
+            this.reportLoading && layer.close(this.reportLoading);
             this.reportLoading = false;
             layer.msg(res.msg)
           })
@@ -71,7 +71,10 @@ export class HomeComponent implements OnInit {
       layer.msg('请打开手机GPS')
       this.initmap(id);
     }
-    setTimeout(() => this.reportLoading = false, 2000)
+    setTimeout(() => {
+      this.reportLoading && layer.close(this.reportLoading);
+      this.reportLoading = false
+    }, 2000);
     // this.workServer.postPoint();
   }
   initmap(id) {
@@ -113,13 +116,13 @@ export class HomeComponent implements OnInit {
       AMap.event.addListener(geolocation, 'complete', (data) => {
         const {lng: longitude, lat: latitude} = data.position;
           this.workServer.postPoint(id, {longitude, latitude}).then(res => {
-            layer.close(this.reportLoading);
+            this.reportLoading && layer.close(this.reportLoading);
             this.reportLoading = false;
             layer.msg(res.msg);
           });
       });
       AMap.event.addListener(geolocation, 'error', (data) => {
-        layer.close(this.reportLoading);
+        this.reportLoading && layer.close(this.reportLoading);
         this.reportLoading = false;
         layer.msg(data.message);
       });
