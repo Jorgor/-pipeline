@@ -37,11 +37,11 @@ export class WorkResolveComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(({id}) => {
-      this.id = id
+      this.id = id;
+      if (!id) {
+        this.router.navigate(['home']);
+      }
     });
-    if (!WorkOrderService.prototype.detail) {
-      this.router.navigate(['home']);
-    }
   }
   goback() {
     this.location.back();
